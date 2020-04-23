@@ -89,6 +89,7 @@ We want to create a form to onboard a new user to our system. We need at least t
             <form onSubmit={formSubmit}>
                 <label htmlFor="name">
                     Name
+                    <br/>
                     <input 
                     type="text"
                     name="name"
@@ -98,8 +99,10 @@ We want to create a form to onboard a new user to our system. We need at least t
                     />
                     {errors.name.length > 0 ? <p className="error">{errors.name}</p> : null}
                 </label>
+                <br/>
                 <label htmlFor="email">
                     Email
+                    <br/>
                     <input
                     type="email"
                     name="email"
@@ -109,8 +112,10 @@ We want to create a form to onboard a new user to our system. We need at least t
                     />
                     {errors.email.length > 0 ? <p className="error">{errors.email}</p> : null}
                 </label>
+                <br/>
                 <label htmlFor="password">
                     Password
+                    <br/>
                     <input
                     type="password"
                     name="password"
@@ -120,6 +125,7 @@ We want to create a form to onboard a new user to our system. We need at least t
                     />
                     {errors.password.length > 0 ? <p className="error">{errors.password}</p> : null}
                 </label>
+                <br/>
                 <label htmlFor="terms" className="terms">
                     <input
                     type="checkbox"
@@ -129,6 +135,7 @@ We want to create a form to onboard a new user to our system. We need at least t
                     />
                     Terms & Conditions
                 </label>
+                <br/>
                 <button disabled={buttonDisabled}>Submit</button>
                 <pre>{JSON.stringify(users, null, 2)}</pre>
             </form>
