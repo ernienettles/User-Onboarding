@@ -2,16 +2,6 @@ import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import axios from "axios";
 
-/*
-We want to create a form to onboard a new user to our system. We need at least the following pieces of information about our new user:
-
- Name
- Email
- Password
- Terms of Service (checkbox)
- A Submit button to send our form data to the server
- */
-
     const formSchema = yup.object().shape({
         name: yup.string().required("Name is a required field."),
         email: yup.string().email("Must be a valid email address.").required("Must include an email address."),
@@ -40,11 +30,12 @@ We want to create a form to onboard a new user to our system. We need at least t
 
         const [users, setUsers] = useState([]);
 
+
         const formSubmit = e => {
             e.preventDefault();
             axios.post("https://reqres.in/api/users", formState)
             .then(response => {
-                setUsers(response.data);
+                setUsers([...users, response.data]);
                 console.log("Success!", users);
                 setFormState({
                     name: "",
@@ -137,8 +128,7 @@ We want to create a form to onboard a new user to our system. We need at least t
                 </label>
                 <br/>
                 <button disabled={buttonDisabled}>Submit</button>
-                <pre>{JSON.stringify(users, null, 2)}</pre>
-            </form>
-            
+                <pre>{users.map( user => JSON.stringify(user, null, 2))}</pre>
+            </form>    
         )
     }
